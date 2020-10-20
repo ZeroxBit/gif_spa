@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Button } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -12,15 +12,19 @@ import Collapse from '@material-ui/core/Collapse';
 import CloseIcon from '@material-ui/icons/Close';
 import { useHistory } from "react-router-dom";
 
+// redux
+import { connect } from "react-redux";
+import * as userActions from "redux/actions/userActions";
+
 // formulario
 import { Formik, Form } from "formik";
 import { LoginShema, INITIAL_VALUES_LOGIN } from './shemas/shemaLogin';
-import { getRandomGif } from '../../services/gifServices';
+import { fakeLogin } from 'services/userServices';
 // import { loginServices } from 'services/userServices';
 const useStyles = makeStyles((theme) => ({
     backdrop: {
         zIndex: theme.zIndex.drawer + 1,
-        color: '#543475',
+        color: '#7E88C1',
     }
 }));
 
@@ -31,26 +35,17 @@ const FormLogin = (props) => {
     // const ctx = useContext(RootContext);
     const [isLoading, setIsLoading] = useState(false);
     const [errorLogin, setErrorLogin] = useState(false)
-
-    useEffect(() => {
-        // getRandomGif();
-        fetch("https://api.giphy.com/v1/gifs/search?api_key=8qp5AGfT6fOKxqoH7bVFcGjsaEnmKEyk&q=&limit=25&offset=0&rating=g&lang=en")
-            .then(r => r.json())
-            .then(r => console.log("r", r))
-            .catch(err => console.log("error", err))
-    }, [])
-
+    
     const handleLogin = async (userLogin) => {
-        // setIsLoading(true);
-        // const login = await loginServices(userLogin);
-
-        // setIsLoading(false);
-        // if (login.status > 299 || login.status < 200) {
-        //     setErrorLogin(true);
-        //     return;
-        // }
-        // // ctx.setToken(getToken());
-        // history.replace("/open/list");
+        setIsLoading(true);
+        const login = await fakeLogin(userLogin);
+        setIsLoading(false);
+        if (login.hasOwnProperty("token")) {
+            props.setToken(login.token);
+            history.replace("/");
+        }
+        setErrorLogin(true);
+        return;
     }
 
 
@@ -151,4 +146,8 @@ const FormLogin = (props) => {
     )
 }
 
-export default FormLogin
+const mapDispatchToProps = {
+    ...userActions
+}
+
+export default connect(null, mapDispatchToProps)(FormLogin)

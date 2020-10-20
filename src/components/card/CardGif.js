@@ -40,7 +40,7 @@ const CardGif = ({gif, heightImage}) => {
                 <div className={classes.cardFotter}>
                     <PersonIcon />
                     <Typography component="span">
-                        {gif.username}
+                        {gif.username || "giphy"}
                     </Typography>
                 </div>
             </CardActions>
@@ -53,7 +53,7 @@ CardGif.defaultProps = {
 }
 
 CardGif.propTypes = {
-    gif: PropTypes.array.isRequired
+    gif: PropTypes.object.isRequired
 }
 
 export default CardGif

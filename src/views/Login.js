@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%"
     },
     imageBgArea: {
-        background: "#543475",
+        background: "#7E88C1",
         height: "100vh",
         display: "flex",
         justifyContent: "center",

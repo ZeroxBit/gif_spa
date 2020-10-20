@@ -5,14 +5,12 @@ export const getRandomGif = async () => {
     const random = "random";
     const result = await instance.get(random);
 
-    console.log("result", result)
     return result;
 }
 
-export const getTrendingServices = async () => {
+export const getTrendingServices = async (offset = 0) => {
     const trending = "trending";
-    const result = await instance.get(trending);
+    const result = await instance.get(trending, {offset});
 
-    console.log("trending", result)
     return result;
 }

@@ -1,17 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-// import FormLogin from './components/form/FormLogin';
-import Login from 'views/Login';
-import ListGifs from 'views/ListGifs';
-import Header from 'components/header/Header';
+import AppRouter from 'router/AppRouter';
+// redux
+import { createStore, applyMiddleware, compose } from "redux";
+import { Provider } from "react-redux";
+import reduxThunk from "redux-thunk";
+import reducer from "redux/reducer" ;
+import { INITIAL_STATE } from 'redux/reducer/gifReducer.js/gifReducer';
+
+const store = createStore(
+  reducer,
+  INITIAL_STATE,
+  applyMiddleware(reduxThunk)
+);
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <ListGifs />
-    </div>
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
   );
 }
 
