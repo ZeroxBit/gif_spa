@@ -1,0 +1,11 @@
+{
+    "base_url": "http://api.giphy.com/v1/gifs/",
+    "headers": {
+        "limit" : 25,
+        "offset": 0,
+        "rating": "g",
+        "lang": "en",
+        "api_key": "8qp5AGfT6fOKxqoH7bVFcGjsaEnmKEyk"
+    },
+    "token_api": "8qp5AGfT6fOKxqoH7bVFcGjsaEnmKEyk"
+}
