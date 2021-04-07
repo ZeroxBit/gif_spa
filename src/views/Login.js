@@ -1,12 +1,12 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import FormLogin from 'components/forms/FormLogin';
-// import BackgroundLogin from "../assets/img/bg_login.png"
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+import FormLogin from "components/forms/FormLogin";
+import BackgroundLogin from "../assets/react-logo.png";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -14,11 +14,11 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         padding: theme.spacing(2),
-        textAlign: 'center',
+        textAlign: "center",
         color: theme.palette.text.secondary,
     },
     imageBg: {
-        width: "100%"
+        width: "100%",
     },
     imageBgArea: {
         background: "#7E88C1",
@@ -27,16 +27,16 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         alignItems: "center",
         "@media only screen and (max-width: 599px)": {
-            display: "none"
-        }
+            display: "none",
+        },
     },
     imageBgXs: {
         display: "none",
         "@media only screen and (max-width: 599px)": {
             display: "block",
             position: "absolute",
-            opacity: ".4"
-        }
+            opacity: ".4",
+        },
     },
     formArea: {
         background: "#7d728a2b",
@@ -46,27 +46,27 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         flex: 1,
         "@media only screen and (max-width: 599px)": {
-            background: "#543475"
-        }
-    }
-
+            background: "#7E88C1",
+        },
+    },
 }));
 
 const Login = (props) => {
     const classes = useStyles();
 
-
     return (
         <Grid container>
             <Grid item xs={12} sm={7} className={classes.imageBgArea}>
-                {/* <img src={BackgroundLogin} alt="background" className={classes.imageBg} /> */}
+                <img
+                    src={BackgroundLogin}
+                    alt="background"
+                    className={classes.imageBg}
+                />
             </Grid>
             <Grid item xs={12} sm={5} className={classes.formArea}>
                 <Container maxWidth="md">
                     <Card className={classes.root}>
-                        <CardHeader
-                            title="Inicia sesion"
-                        />
+                        <CardHeader title="Inicia sesion" />
                         <CardContent>
                             <FormLogin />
                         </CardContent>
@@ -75,6 +75,6 @@ const Login = (props) => {
             </Grid>
         </Grid>
     );
-}
+};
 
 export default Login;
