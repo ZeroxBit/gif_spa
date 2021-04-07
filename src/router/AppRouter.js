@@ -18,7 +18,7 @@ const AppRouter = (props) => {
     };
 
     return (
-        <Router basename="/">
+        <Router basename="/gif_spa">
             {handleShowHeader()}
             <Switch>
                 <PublicRouter exact path={"/login"} component={Login} />
